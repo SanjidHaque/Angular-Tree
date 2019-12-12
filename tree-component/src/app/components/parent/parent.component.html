@@ -4,18 +4,17 @@
 
     <app-child [type]="''"></app-child>
 
-    <!--<button-->
-      <!--mat-mini-fab color="primary"-->
-      <!--style="text-align: center; outline: 0;"-->
-      <!--(click)="addNewRoot()">+</button>-->
-
   </div>
 </div>
 
 
 
 <div class="row" *ngFor="let root of roots; let i = index">
-  <div class="offset-xl-4 col-xl-4" style="padding-left: 50px;">
+  <div class="offset-xl-4 col-xl-4"
+       style="
+       padding-bottom: 10px;
+       padding-top: 10px;
+       padding-left: 50px;">
 
 
     {{ root.Name }}
@@ -26,12 +25,13 @@
 
     <app-child [rootIndex]="i" [type] = "'root'"></app-child>
 
-    <!--<button (click)="addNewParent(i)">Add</button>-->
-    <!--<button (click)="deleteRoot(i)">Delete</button>-->
-
 
     <div class="row" *ngFor="let parent of root.Parents; let j = index">
-      <div class="col-xl-12" style="padding-left: 50px;">
+      <div class="col-xl-12"
+           style="
+           padding-bottom: 10px;
+           padding-top: 10px;
+           padding-left: 50px;">
 
         {{ parent.Name }}
 
@@ -39,13 +39,17 @@
           ({{ parent.Children.length }})
         </span>
 
-        <app-child [rootIndex]="i" [parentIndex]="j" [type] = "'parent'"></app-child>
+        <app-child
+          [rootIndex]="i"
+          [parentIndex]="j" [type] = "'parent'"></app-child>
 
-        <!--<button (click)="addNewChild(i,j)">Add</button>-->
-        <!--<button (click)="deleteParent(i,j)">Delete</button>-->
 
         <div class="row" *ngFor="let child of parent.Children; let k = index">
-          <div class="col-xl-12" style="padding-left: 50px;">
+          <div class="col-xl-12"
+               style="
+               padding-bottom: 10px;
+               padding-top: 10px;
+               padding-left: 50px;">
 
 
             {{ child.Name }}
@@ -54,14 +58,17 @@
               ({{ child.GrandChildren.length }})
             </span>
 
-            <app-child [rootIndex]="i" [parentIndex]="j" [childIndex] = "k"></app-child>
-
-            <!--<button (click)="addNewGrandChild(i,j,k)">Add</button>-->
-            <!--<button (click)="deleteChild(i,j,k)">Delete</button>-->
-
+            <app-child [rootIndex]="i"
+                       [parentIndex]="j"
+                       [childIndex] = "k"
+                       [type] = "'child'"></app-child>
 
             <div class="row" *ngFor="let grandChild of child.GrandChildren">
-              <div class="col-xl-12" style="padding-left: 50px;">
+              <div class="col-xl-12"
+                   style="
+                   padding-bottom: 10px;
+                   padding-top: 10px;
+                   padding-left: 50px;">
                 {{ grandChild.Name }}
               </div>
             </div>

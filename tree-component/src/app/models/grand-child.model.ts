@@ -5,7 +5,5 @@ export class GrandChild {
     public Id: number,
     public Name: string,
     public DeepGrandChildren: DeepGrandChild[]
-  ) {
-
-  }
+  ) {}
 }

@@ -5,7 +5,5 @@ export class Root {
     public Id: number,
     public Name: string,
     public Parents: Parent[]
-  ) {
-
-  }
+  ) {}
 }

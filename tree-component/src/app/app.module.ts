@@ -13,6 +13,7 @@ import {
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DynamicDirective} from './dynamic.directive';
+import {TreeService} from './services/tree.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,10 @@ import {DynamicDirective} from './dynamic.directive';
     MatInputModule,
     BrowserAnimationsModule
   ],
-  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+    TreeService
+  ],
   entryComponents: [
     ChildComponent,
     AddNewChildDialogComponent

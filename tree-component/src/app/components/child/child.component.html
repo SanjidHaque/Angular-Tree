@@ -2,22 +2,61 @@
 
 <span *ngIf="type === ''">
 
-  <button (click)="addNewRoot()">Add</button>
+  <button
+    style="outline: 0; font-weight: bold;"
+    mat-mini-fab
+    color="primary"
+    (click)="addNewRoot()">+</button>
 
 </span>
 
 <span *ngIf="type === 'root'">
 
-  <button (click)="addNewParent()">Add</button>
-  <button (click)="deleteRoot()">Delete</button>
+  <button
+    style="outline: 0; font-weight: bold;"
+    mat-mini-fab
+    color="primary"
+    (click)="addNewParent()">+</button>
+
+  <button
+    style="outline: 0; font-weight: bold;"
+    mat-mini-fab
+    color="warn"
+    (click)="deleteRoot()">X</button>
 
 </span>
 
 <span *ngIf="type === 'parent'">
 
 
-<button (click)="addNewChild()">Add</button>
-<button (click)="deleteParent()">Delete</button>
+<button
+  style="outline: 0; font-weight: bold;"
+  mat-mini-fab
+  color="primary"
+  (click)="addNewChild()">+</button>
+
+<button
+  style="outline: 0; font-weight: bold;"
+  mat-mini-fab
+  color="warn"
+  (click)="deleteParent()">X</button>
+
+</span>
+
+<span *ngIf="type === 'child'">
+
+
+<button
+  style="outline: 0; font-weight: bold;"
+  mat-mini-fab
+  color="primary"
+  (click)="addNewGrandChild()">+</button>
+
+<button
+  style="outline: 0; font-weight: bold;"
+  mat-mini-fab
+  color="warn"
+  (click)="deleteChild()">X</button>
 
 </span>
 
