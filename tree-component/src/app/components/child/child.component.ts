@@ -18,17 +18,12 @@ export class ChildComponent implements OnInit {
   @Input('parentIndex') parentIndex: number;
   @Input('childIndex') childIndex: number;
   @Input('type') type: string;
-
-  roots: Root[] = [];
+  
   constructor(private dialog: MatDialog,
               private treeService: TreeService) { }
 
 
-  ngOnInit() {
-    console.log(this.rootIndex);
-    console.log(this.parentIndex);
-    console.log(this.childIndex);
-  }
+  ngOnInit() {}
 
   addNewRoot() {
     const dialogRef = this.dialog.open(AddNewChildDialogComponent,
@@ -46,14 +41,16 @@ export class ChildComponent implements OnInit {
 
       if (result !== '') {
 
-        const root = this.treeService.roots.find(x => x.Name === result);
+        const root = this.treeService
+          .roots
+          .find(x => x.Name === result);
 
         if (root !== undefined) {
           alert('Resource already exists!');
+          return;
         }
 
         this.treeService.roots.push(new Root(Math.random(), result, []));
-        console.log(this.roots);
       }
 
     });
@@ -76,7 +73,19 @@ export class ChildComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result !== '') {
-        this.treeService.roots[this.rootIndex]
+
+        const parent = this.treeService
+          .roots[this.rootIndex]
+          .Parents
+          .find(x => x.Name === result);
+
+        if (parent !== undefined) {
+          alert('Resource already exists!');
+          return;
+        }
+
+        this.treeService
+          .roots[this.rootIndex]
           .Parents.push(new Parent(Math.random(), result, []));
       }
 
@@ -98,7 +107,20 @@ export class ChildComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result !== '') {
-        this.treeService.roots[this.rootIndex]
+
+        const child = this.treeService
+          .roots[this.rootIndex]
+          .Parents[this.parentIndex]
+          .Children
+          .find(x => x.Name === result);
+
+        if (child !== undefined) {
+          alert('Resource already exists!');
+          return;
+        }
+
+        this.treeService
+          .roots[this.rootIndex]
           .Parents[this.parentIndex]
           .Children.push(new Child(Math.random(), result, []));
       }
@@ -121,10 +143,25 @@ export class ChildComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result !== '') {
+
+        const grandChild = this.treeService
+          .roots[this.rootIndex]
+          .Parents[this.parentIndex]
+          .Children[this.childIndex]
+          .GrandChildren
+          .find(x => x.Name === result);
+
+        if (grandChild !== undefined) {
+          alert('Resource already exists!');
+          return;
+        }
+
+
         this.treeService.roots[this.rootIndex]
           .Parents[this.parentIndex]
           .Children[this.childIndex]
-          .GrandChildren.push(new GrandChild(Math.random(), result, []));
+          .GrandChildren
+          .push(new GrandChild(Math.random(), result, []));
       }
 
     });
