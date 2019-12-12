@@ -1,0 +1,23 @@
+
+
+<span *ngIf="type === ''">
+
+  <button (click)="addNewRoot()">Add</button>
+
+</span>
+
+<span *ngIf="type === 'root'">
+
+  <button (click)="addNewParent()">Add</button>
+  <button (click)="deleteRoot()">Delete</button>
+
+</span>
+
+<span *ngIf="type === 'parent'">
+
+
+<button (click)="addNewChild()">Add</button>
+<button (click)="deleteParent()">Delete</button>
+
+</span>
+
